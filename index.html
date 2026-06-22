@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url=frontend/src/index.html">
+    <title>Redirecting to Automatic Workflow...</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+        }
+        .container { text-align: center; padding: 2rem; }
+        .logo { font-size: 3rem; margin-bottom: 1rem; }
+        h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 1.5rem auto 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fallback { margin-top: 1rem; font-size: 0.875rem; opacity: 0.8; }
+        .fallback a { color: white; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">⚡</div>
+        <h1>Automatic Workflow</h1>
+        <p>Loading...</p>
+        <div class="spinner"></div>
+        <p class="fallback">
+            If not redirected, <a href="frontend/src/index.html">click here</a>
+        </p>
+    </div>
+</body>
+</html>
