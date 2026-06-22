@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run Python linter
+        run: |
+          pip install ruff
+          cd backend
+          ruff check src/
+
+  frontend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HTML/CSS/JS
+        run: |
+          echo "Checking frontend files..."
+          find frontend/src -name "*.html" -o -name "*.css" -o -name "*.js" | head -20

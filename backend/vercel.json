@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/presentation/app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "src/presentation/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "src/presentation/app.py"
+    }
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.11"
+  },
+  "regions": ["iad1"],
+  "functions": {
+    "src/presentation/app.py": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
+}
