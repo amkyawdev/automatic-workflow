@@ -5,8 +5,7 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb",
-        "pythonVersion": "3.11"
+        "maxLambdaSize": "15mb"
       }
     }
   ],
@@ -40,9 +39,6 @@
       "dest": "api/index.py"
     }
   ],
-  "python": {
-    "version": "3.11"
-  },
   "regions": ["iad1"],
   "functions": {
     "api/index.py": {
