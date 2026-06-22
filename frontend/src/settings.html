@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Automatic Workflow</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+    <div id="app" class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">AutoFlow</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/workflows.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Workflows</span>
+                </a>
+                <a href="/integrations.html" class="nav-item">
+                    <span class="nav-icon">🔗</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="/settings.html" class="nav-item active">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="/help.html" class="nav-item">
+                    <span class="nav-icon">❓</span>
+                    <span>Help</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Settings</h1>
+            </header>
+
+            <!-- Settings Sections -->
+            <div class="settings-container">
+                <!-- Profile Section -->
+                <section class="settings-section">
+                    <h2 class="section-title">Profile</h2>
+                    <div class="settings-card">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="input" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Display Name</label>
+                            <input type="text" id="name" class="input" placeholder="Your Name">
+                        </div>
+                        <button class="btn btn-primary">Save Changes</button>
+                    </div>
+                </section>
+
+                <!-- API Keys Section -->
+                <section class="settings-section">
+                    <h2 class="section-title">API Keys</h2>
+                    <div class="settings-card">
+                        <div class="api-key-info">
+                            <p>API keys allow you to programmatically access the Automatic Workflow API.</p>
+                            <button class="btn btn-secondary" id="generate-api-key">
+                                <span>+</span> Generate New API Key
+                            </button>
+                        </div>
+                        <div id="api-keys-list" class="api-keys-list">
+                            <!-- API keys will be listed here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications Section -->
+                <section class="settings-section">
+                    <h2 class="section-title">Notifications</h2>
+                    <div class="settings-card">
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-label">Email Notifications</span>
+                                <span class="setting-desc">Receive email alerts for workflow failures</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="email-notifications">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-label">Slack Notifications</span>
+                                <span class="setting-desc">Send alerts to your Slack channel</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="slack-notifications">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section class="settings-section">
+                    <h2 class="section-title">Security</h2>
+                    <div class="settings-card">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" class="input">
+                        </div>
+                        <button class="btn btn-primary">Update Password</button>
+                    </div>
+                </section>
+
+                <!-- Danger Zone -->
+                <section class="settings-section danger-zone">
+                    <h2 class="section-title">Danger Zone</h2>
+                    <div class="settings-card">
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-label">Delete Account</span>
+                                <span class="setting-desc">Permanently delete your account and all data</span>
+                            </div>
+                            <button class="btn btn-danger">Delete Account</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="scripts/core/app.js"></script>
+</body>
+</html>

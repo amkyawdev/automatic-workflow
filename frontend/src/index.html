@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Automatic Workflow - Home</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/chat.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/index.html" class="logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">AutoFlow</span>
+                    </a>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="nav-desktop">
+                        <a href="/index.html" class="nav-link active">Home</a>
+                        <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                        <a href="/workflows.html" class="nav-link">Workflows</a>
+                        <a href="/integrations.html" class="nav-link">Integrations</a>
+                        <a href="/settings.html" class="nav-link">Settings</a>
+                    </nav>
+                    
+                    <div class="header-actions">
+                        <button id="chat-toggle" class="btn btn-icon" aria-label="Open chat">
+                            💬
+                        </button>
+                        <button id="login-btn" class="btn btn-primary btn-sm">Get Started</button>
+                        
+                        <!-- Mobile Menu Toggle -->
+                        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile" id="mobile-nav">
+            <a href="/index.html" class="nav-mobile-link active">Home</a>
+            <a href="/dashboard.html" class="nav-mobile-link">Dashboard</a>
+            <a href="/workflows.html" class="nav-mobile-link">Workflows</a>
+            <a href="/integrations.html" class="nav-mobile-link">Integrations</a>
+            <a href="/settings.html" class="nav-mobile-link">Settings</a>
+            <div class="nav-mobile-actions">
+                <button id="login-btn-mobile" class="btn btn-primary btn-block">Get Started</button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">✨ Now with AI Assistant</div>
+                    <h1 class="hero-title">
+                        Build Workflows That <br>
+                        <span class="gradient-text">Work</span> For You
+                    </h1>
+                    <p class="hero-subtitle">
+                        Create powerful automations without code. Connect your favorite services,
+                        set triggers, and let Automatic Workflow handle the rest.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg">Start Building Free</button>
+                        <button class="btn btn-secondary btn-lg">Watch Demo</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-value">10K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">1M+</span>
+                            <span class="stat-label">Executions</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Everything You Need to Automate</h2>
+                    <p class="section-subtitle">Powerful features to streamline your workflows</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3 class="feature-title">Multi-Service Integration</h3>
+                        <p class="feature-desc">
+                            Connect OpenAI, Slack, Discord, GitHub, Google Sheets, Notion, and more.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3 class="feature-title">Flexible Triggers</h3>
+                        <p class="feature-desc">
+                            Schedule with cron, webhooks, or event-based triggers.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3 class="feature-title">Secure by Design</h3>
+                        <p class="feature-desc">
+                            Your API keys are encrypted at rest. We never share your data.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">Real-time Monitoring</h3>
+                        <p class="feature-desc">
+                            Track execution history and get instant alerts on failures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrations Section -->
+        <section class="integrations">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Popular Integrations</h2>
+                    <p class="section-subtitle">Connect with your favorite tools</p>
+                </div>
+                <div class="integrations-grid">
+                    <div class="integration-item">
+                        <span class="integration-icon">🤖</span>
+                        <span class="integration-name">OpenAI</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-icon">💬</span>
+                        <span class="integration-name">Slack</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-icon">🎮</span>
+                        <span class="integration-name">Discord</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-icon">🐙</span>
+                        <span class="integration-name">GitHub</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-icon">📊</span>
+                        <span class="integration-name">Google Sheets</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-icon">📝</span>
+                        <span class="integration-name">Notion</span>
+                    </div>
+                </div>
+                <p class="integrations-more">+ 50 more integrations available</p>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Simple, Transparent Pricing</h2>
+                    <p class="section-subtitle">Choose the plan that fits your needs</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-name">Free</h3>
+                            <div class="pricing-amount">$0<span>/month</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ 100 executions/month</li>
+                            <li>✓ 5 workflows</li>
+                            <li>✓ Basic integrations</li>
+                            <li>✓ Community support</li>
+                        </ul>
+                        <button class="btn btn-outline btn-block">Get Started</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-name">Pro</h3>
+                            <div class="pricing-amount">$29<span>/month</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Unlimited executions</li>
+                            <li>✓ Unlimited workflows</li>
+                            <li>✓ All integrations</li>
+                            <li>✓ Priority support</li>
+                            <li>✓ Advanced analytics</li>
+                        </ul>
+                        <button class="btn btn-primary btn-block">Start Free Trial</button>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-name">Enterprise</h3>
+                            <div class="pricing-amount">Contact</div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✓ Everything in Pro</li>
+                            <li>✓ Custom integrations</li>
+                            <li>✓ Dedicated support</li>
+                            <li>✓ SLA guarantee</li>
+                        </ul>
+                        <button class="btn btn-outline btn-block">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <a href="/index.html" class="logo">
+                            <span class="logo-icon">⚡</span>
+                            <span class="logo-text">AutoFlow</span>
+                        </a>
+                        <p class="footer-tagline">Automate everything. Focus on what matters.</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-col">
+                            <h4>Product</h4>
+                            <a href="/workflows.html">Features</a>
+                            <a href="/integrations.html">Integrations</a>
+                            <a href="#">Pricing</a>
+                            <a href="/help.html">Documentation</a>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Company</h4>
+                            <a href="#">About</a>
+                            <a href="#">Blog</a>
+                            <a href="#">Careers</a>
+                            <a href="#">Contact</a>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Legal</h4>
+                            <a href="#">Privacy</a>
+                            <a href="#">Terms</a>
+                            <a href="#">Security</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 Automatic Workflow. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget hidden">
+        <div class="chat-header">
+            <div class="chat-title">
+                <span class="chat-avatar">🤖</span>
+                <span>AI Assistant</span>
+            </div>
+            <button id="chat-close" class="chat-close">×</button>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="chat-message bot">
+                <div class="message-content">
+                    Hi! I'm your Automatic Workflow assistant. How can I help you today?
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        <div class="chat-suggestions">
+            <button class="suggestion-chip">Getting Started</button>
+            <button class="suggestion-chip">API Keys</button>
+            <button class="suggestion-chip">Integrations</button>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything...">
+            <button id="chat-send" class="chat-send">➤</button>
+        </div>
+    </div>
+
+    <!-- Chat Floating Button -->
+    <button id="chat-fab" class="chat-fab" aria-label="Open chat">
+        💬
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const chatFab = document.getElementById('chat-fab');
+        const chatWidget = document.getElementById('chat-widget');
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatClose = document.getElementById('chat-close');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('open');
+            mobileOverlay.classList.toggle('visible');
+            document.body.classList.toggle('menu-open');
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('open');
+            mobileOverlay.classList.remove('visible');
+            document.body.classList.remove('menu-open');
+        }
+
+        function toggleChat() {
+            chatWidget.classList.toggle('hidden');
+            chatFab.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn?.addEventListener('click', toggleMobileMenu);
+        mobileOverlay?.addEventListener('click', closeMobileMenu);
+        chatToggle?.addEventListener('click', toggleChat);
+        chatFab?.addEventListener('click', toggleChat);
+        chatClose?.addEventListener('click', toggleChat);
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-mobile-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Login buttons sync
+        const loginBtn = document.getElementById('login-btn');
+        const loginBtnMobile = document.getElementById('login-btn-mobile');
+        loginBtnMobile?.addEventListener('click', () => {
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+    <script type="module" src="scripts/core/app.js"></script>
+</body>
+</html>
