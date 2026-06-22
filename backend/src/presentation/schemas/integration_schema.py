@@ -4,7 +4,7 @@ Integration Schemas - Pydantic Models
 
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, Any
-from datetime import datetime
+# datetime removed - unused
 
 
 class IntegrationConnect(BaseModel):

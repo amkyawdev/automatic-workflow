@@ -3,7 +3,6 @@ User Entity - Domain Model
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
 from typing import Optional, Dict, Any
 from enum import Enum
 

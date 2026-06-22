@@ -2,7 +2,6 @@
 JWT Handler - Token Generation and Validation
 """
 
-from datetime import datetime, timedelta
 from typing import Optional
 from jose import jwt, JWTError
 from src.utils.config import settings

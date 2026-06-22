@@ -4,7 +4,6 @@ Workflow Schemas - Pydantic Models for Request/Response
 
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, Any, List
-from datetime import datetime
 
 
 class TriggerSchema(BaseModel):

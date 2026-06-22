@@ -5,7 +5,6 @@ Authenticate User Use Case
 from typing import Optional, Tuple
 from src.core.entities.user import User
 from src.infrastructure.security.jwt_handler import JWTHandler
-from datetime import datetime
 
 
 class AuthenticateUserUseCase:
