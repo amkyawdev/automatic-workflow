@@ -4,6 +4,7 @@ Chat Message Entity - Domain Model
 
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Any, List
+from datetime import datetime
 
 
 @dataclass

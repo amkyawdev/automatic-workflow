@@ -59,7 +59,9 @@ class UserRepository:
     async def create(self, user: User, password: str) -> User:
         from passlib.context import CryptContext
         pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-        user.hashed_password = pwd_context.hash(password)
+        # bcrypt has a 72 bytes limit
+        password_bytes = password.encode('utf-8')[:72].decode('utf-8', errors='ignore')
+        user.hashed_password = pwd_context.hash(password_bytes)
         self._users[user.id] = user
         logger.info(f"Created user: {user.id}")
         return user

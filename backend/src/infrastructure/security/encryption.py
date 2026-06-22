@@ -5,7 +5,7 @@ Encryption Service - API Key Encryption
 import base64
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from src.utils.config import settings
 
 
@@ -16,7 +16,7 @@ class EncryptionService:
     
     def _derive_key(self, password: str) -> bytes:
         """Derive encryption key from password"""
-        kdf = PBKDF2(
+        kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
             salt=b"automatic_workflow_salt",

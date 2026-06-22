@@ -29,10 +29,28 @@ jwt_handler = JWTHandler()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
 
+async def get_current_user_from_token(token: str = Depends(oauth2_scheme)) -> User:
+    """Dependency to get current user from JWT token"""
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"}
+    )
+    
+    user_id = jwt_handler.decode_token(token)
+    if user_id is None:
+        raise credentials_exception
+    
+    user = await user_repo.get_by_id(user_id)
+    if user is None:
+        raise credentials_exception
+    
+    return user
+
+
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def register(user_data: UserCreate):
     """Register a new user"""
-    # Check if email already exists
     existing = await user_repo.get_by_email(user_data.email)
     if existing:
         raise HTTPException(
@@ -40,12 +58,11 @@ async def register(user_data: UserCreate):
             detail="Email already registered"
         )
     
-    # Create new user
     user = User(
         id=str(uuid.uuid4()),
         email=user_data.email,
         name=user_data.name,
-        hashed_password="",  # Will be hashed in the repository
+        hashed_password="",
         plan=UserPlan.FREE
     )
     
@@ -117,22 +134,3 @@ async def get_current_user_info(
 ):
     """Get current user information"""
     return UserResponse(**current_user.to_dict())
-
-
-async def get_current_user_from_token(token: str = Depends(oauth2_scheme)) -> User:
-    """Dependency to get current user from JWT token"""
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"}
-    )
-    
-    user_id = jwt_handler.decode_token(token)
-    if user_id is None:
-        raise credentials_exception
-    
-    user = await user_repo.get_by_id(user_id)
-    if user is None:
-        raise credentials_exception
-    
-    return user

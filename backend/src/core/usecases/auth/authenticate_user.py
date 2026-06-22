@@ -3,6 +3,7 @@ Authenticate User Use Case
 """
 
 from typing import Optional, Tuple
+from datetime import datetime
 from src.core.entities.user import User
 from src.infrastructure.security.jwt_handler import JWTHandler
 
@@ -23,8 +24,10 @@ class AuthenticateUserUseCase:
         # Verify password
         from passlib.context import CryptContext
         pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+        # bcrypt has a 72 bytes limit
+        password_bytes = password.encode('utf-8')[:72].decode('utf-8', errors='ignore')
         
-        if not pwd_context.verify(password, user.hashed_password):
+        if not pwd_context.verify(password_bytes, user.hashed_password):
             return None
         
         # Check if user is active

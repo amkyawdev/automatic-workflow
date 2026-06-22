@@ -5,6 +5,7 @@ User Entity - Domain Model
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Any
 from enum import Enum
+from datetime import datetime
 
 
 class UserPlan(str, Enum):
