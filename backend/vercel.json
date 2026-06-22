@@ -1,59 +1,15 @@
 {
-  /*
-  |--------------------------------------------------------------------------
-  | Automatic Workflow - Vercel Serverless Configuration
-  |--------------------------------------------------------------------------
-  |
-  | This file configures the Vercel deployment for the FastAPI backend.
-  | 
-  | Deployment Steps:
-  | 1. Import this project in Vercel (vercel.com)
-  | 2. Select the 'backend' directory as the project root
-  | 3. Add environment variables in Vercel dashboard:
-  |    - SECRET_KEY (min 32 characters)
-  |    - DATABASE_URL (PostgreSQL connection string)
-  |    - OPENAI_API_KEY (optional, for AI features)
-  |    - REDIS_URL (optional, for caching)
-  | 4. Deploy!
-  |
-  | API URL: https://your-project.vercel.app/api/v1/
-  |
-  */
-
   "version": 2,
-  
-  /*
-  |--------------------------------------------------------------------------
-  | Build Configuration
-  |--------------------------------------------------------------------------
-  |
-  | Specifies how Vercel should build the project.
-  | - src: Entry point for the Python application
-  | - use: Vercel Python runtime
-  |
-  */
   "builds": [
     {
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "pythonVersion": "3.11",
-        "installCommand": "pip install -r requirements.txt"
+        "pythonVersion": "3.11"
       }
     }
   ],
-
-  /*
-  |--------------------------------------------------------------------------
-  | Routes Configuration
-  |--------------------------------------------------------------------------
-  |
-  | Defines how incoming requests are routed to functions.
-  | - /api/* routes go to FastAPI app
-  | - / routes also go to FastAPI app (for health checks)
-  |
-  */
   "routes": [
     {
       "src": "/api/v1/auth/(.*)",
@@ -84,70 +40,16 @@
       "dest": "api/index.py"
     }
   ],
-
-  /*
-  |--------------------------------------------------------------------------
-  | Python Runtime
-  |--------------------------------------------------------------------------
-  */
   "python": {
     "version": "3.11"
   },
-
-  /*
-  |--------------------------------------------------------------------------
-  | Environment Variables (add in Vercel Dashboard)
-  |--------------------------------------------------------------------------
-  |
-  | Required:
-  |   SECRET_KEY - JWT signing key (min 32 chars)
-  |   DATABASE_URL - PostgreSQL connection string
-  |
-  | Optional:
-  |   OPENAI_API_KEY - For AI chat features
-  |   REDIS_URL - For caching
-  |   SLACK_BOT_TOKEN - For Slack integration
-  |   DISCORD_BOT_TOKEN - For Discord integration
-  |   DEBUG - Set to 'true' for debug mode
-  |
-  */
-  "env": {
-    "PYTHON_VERSION": "3.11"
-  },
-
-  /*
-  |--------------------------------------------------------------------------
-  | Region Configuration
-  |--------------------------------------------------------------------------
-  |
-  | Deploy to specific regions for lower latency.
-  | Options: iad1 (US East), sfo1 (US West), cdg1 (Europe), hnd1 (Asia)
-  |
-  */
   "regions": ["iad1"],
-
-  /*
-  |--------------------------------------------------------------------------
-  | Function Configuration
-  |--------------------------------------------------------------------------
-  |
-  | Configure serverless function resources.
-  | - memory: RAM allocation (512MB - 3008MB)
-  | - maxDuration: Max execution time (10s - 300s)
-  |
-  */
   "functions": {
     "api/index.py": {
       "memory": 1024,
       "maxDuration": 30
     }
   },
-
-  /*
-  |--------------------------------------------------------------------------
-  | Headers (for CORS & Security)
-  |--------------------------------------------------------------------------
-  */
   "headers": [
     {
       "source": "/api/(.*)",
