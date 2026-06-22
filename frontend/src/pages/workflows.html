@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflows - Automatic Workflow</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/components.css">
+</head>
+<body>
+    <div id="app" class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">AutoFlow</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="workflows.html" class="nav-item active">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Workflows</span>
+                </a>
+                <a href="integrations.html" class="nav-item">
+                    <span class="nav-icon">🔗</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="help.html" class="nav-item">
+                    <span class="nav-icon">❓</span>
+                    <span>Help</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Workflows</h1>
+                <button id="new-workflow-btn" class="btn btn-primary">
+                    <span>+</span> New Workflow
+                </button>
+            </header>
+
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search workflows..." class="input">
+                </div>
+                <div class="filter-group">
+                    <select id="status-filter" class="select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Workflow List -->
+            <div id="workflow-list" class="workflow-grid">
+                <!-- Empty State -->
+                <div class="empty-state-card">
+                    <div class="empty-icon">📋</div>
+                    <h3>No workflows yet</h3>
+                    <p>Create your first workflow to start automating!</p>
+                    <button class="btn btn-primary">Create Workflow</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Workflow Builder Modal -->
+    <div id="workflow-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Create Workflow</h2>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="workflow-name">Workflow Name</label>
+                    <input type="text" id="workflow-name" class="input" placeholder="My Awesome Workflow">
+                </div>
+                <div class="form-group">
+                    <label>Trigger</label>
+                    <div class="trigger-options">
+                        <button class="trigger-option selected" data-trigger="schedule">
+                            <span class="trigger-icon">⏰</span>
+                            <span>Schedule</span>
+                        </button>
+                        <button class="trigger-option" data-trigger="webhook">
+                            <span class="trigger-icon">🪝</span>
+                            <span>Webhook</span>
+                        </button>
+                        <button class="trigger-option" data-trigger="event">
+                            <span class="trigger-icon">⚡</span>
+                            <span>Event</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="workflow-description">Description (optional)</label>
+                    <textarea id="workflow-description" class="textarea" rows="3" placeholder="What does this workflow do?"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../scripts/core/app.js"></script>
+</body>
+</html>
