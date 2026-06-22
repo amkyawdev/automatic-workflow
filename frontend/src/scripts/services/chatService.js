@@ -2,19 +2,33 @@
  * Chat Service - API Client for Chat
  */
 
-const API_BASE = '/api/v1';
+const API_CONFIG = {
+    baseUrl: '/api/v1'
+};
 
 class ChatService {
     constructor() {
-        this.baseUrl = API_BASE;
+        this.baseUrl = API_CONFIG.baseUrl;
+    }
+
+    getToken() {
+        try {
+            const stored = localStorage.getItem('autoflow_auth');
+            if (stored) {
+                const data = JSON.parse(stored);
+                return data.token || '';
+            }
+        } catch (e) {}
+        return '';
     }
 
     async sendMessage(message, conversationId = null) {
+        const token = this.getToken();
         const response = await fetch(`${this.baseUrl}/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.getToken()}`
+                ...(token && { 'Authorization': `Bearer ${token}` })
             },
             body: JSON.stringify({
                 message,
@@ -25,9 +39,10 @@ class ChatService {
     }
 
     async getHistory(limit = 50) {
+        const token = this.getToken();
         const response = await fetch(`${this.baseUrl}/chat/history?limit=${limit}`, {
             headers: {
-                'Authorization': `Bearer ${this.getToken()}`
+                ...(token && { 'Authorization': `Bearer ${token}` })
             }
         });
         return response;
@@ -39,11 +54,12 @@ class ChatService {
     }
 
     async submitFeedback(messageId, helpful) {
+        const token = this.getToken();
         const response = await fetch(`${this.baseUrl}/chat/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.getToken()}`
+                ...(token && { 'Authorization': `Bearer ${token}` })
             },
             body: JSON.stringify({
                 message_id: messageId,
@@ -51,10 +67,6 @@ class ChatService {
             })
         });
         return response;
-    }
-
-    getToken() {
-        return localStorage.getItem('autoflow_token') || '';
     }
 }
 

@@ -345,7 +345,6 @@
         const heroBtnSecondary = document.querySelector('.hero-actions .btn-secondary');
         if (heroBtnPrimary) heroBtnPrimary.addEventListener('click', () => window.location.href = 'dashboard.html');
         if (heroBtnSecondary) heroBtnSecondary.addEventListener('click', () => {
-            // Scroll to features section as demo
             document.querySelector('.features')?.scrollIntoView({ behavior: 'smooth' });
         });
 
@@ -360,6 +359,102 @@
         // Pricing buttons
         document.querySelectorAll('.pricing-card .btn').forEach(btn => {
             btn.addEventListener('click', () => window.location.href = 'dashboard.html');
+        });
+
+        // Chat Widget Functionality
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        const chatMessages = document.getElementById('chat-messages');
+
+        async function sendChatMessage() {
+            if (!chatInput || !chatInput.value.trim()) return;
+            
+            const msg = chatInput.value.trim();
+            chatInput.value = '';
+            
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-message user';
+            userDiv.innerHTML = '<div class="message-content">' + escapeHtml(msg) + '</div>';
+            chatMessages.appendChild(userDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Add loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'chat-message bot loading';
+            loadingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                // Get token from storage
+                let token = '';
+                try {
+                    const stored = localStorage.getItem('autoflow_auth');
+                    if (stored) {
+                        const data = JSON.parse(stored);
+                        token = data.token || '';
+                    }
+                } catch (e) {}
+                
+                const response = await fetch('/api/v1/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(token && { 'Authorization': `Bearer ${token}` })
+                    },
+                    body: JSON.stringify({ message: msg })
+                });
+                
+                loadingDiv.remove();
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'chat-message bot';
+                    botDiv.innerHTML = '<div class="message-content">' + data.message.replace(/\n/g, '<br>') + '</div>';
+                    chatMessages.appendChild(botDiv);
+                } else if (response.status === 401) {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'chat-message bot';
+                    botDiv.innerHTML = '<div class="message-content">Please <a href="dashboard.html">login</a> to use the AI assistant.</div>';
+                    chatMessages.appendChild(botDiv);
+                } else {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'chat-message bot';
+                    botDiv.innerHTML = '<div class="message-content">Sorry, I encountered an error. Please try again.</div>';
+                    chatMessages.appendChild(botDiv);
+                }
+            } catch (e) {
+                loadingDiv.remove();
+                const botDiv = document.createElement('div');
+                botDiv.className = 'chat-message bot';
+                botDiv.innerHTML = '<div class="message-content">Connection error. Please check your internet.</div>';
+                chatMessages.appendChild(botDiv);
+            }
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        if (chatSend) chatSend.addEventListener('click', sendChatMessage);
+        if (chatInput) chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+
+        // Suggestion chips
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                if (chatInput) {
+                    chatInput.value = chip.textContent;
+                    sendChatMessage();
+                }
+            });
         });
     </script>
     <script type="module" src="scripts/core/app.js"></script>
