@@ -2,6 +2,18 @@
   "version": 2,
   "builds": [
     {
+      "src": "frontend/src/**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/src/**/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/src/**/*.js",
+      "use": "@vercel/static"
+    },
+    {
       "src": "frontend/src/**/*",
       "use": "@vercel/static"
     },
@@ -16,8 +28,32 @@
       "dest": "backend/api/index.py"
     },
     {
-      "src": "/(.*)",
+      "src": "/styles/(.*)",
+      "dest": "frontend/src/styles/$1"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "frontend/src/scripts/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "frontend/src/assets/$1"
+    },
+    {
+      "src": "/components/(.*)",
+      "dest": "frontend/src/components/$1"
+    },
+    {
+      "src": "/(.*\\.html)",
       "dest": "frontend/src/$1"
+    },
+    {
+      "src": "/",
+      "dest": "frontend/src/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/src/index.html"
     }
   ]
 }
